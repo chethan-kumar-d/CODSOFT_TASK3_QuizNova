@@ -1,126 +1,158 @@
 # QuizNova — Programming & Aptitude
 
-**QuizNova** is a native Android quiz application built with **Kotlin**, **Jetpack Compose**, and **Material 3** for **Task 4 of the CodSoft Android Development Internship**.
+QuizNova is a native Android quiz app for practising programming concepts and logical reasoning. It combines an animated 3D-inspired interface with instant answer feedback, explanations and locally stored progress.
 
-It combines a dimensional 3D-inspired interface, a validated bank of **225 unique programming and aptitude questions**, deterministic single-question scoring, **Practice** and **Challenge** integrity modes, genuine on-device **Room** analytics, and transparent privacy controls—operating 100% offline without accounts, API keys, advertisements, or external backends.
-
----
+This is my third completed project for the **CodSoft Android Development Internship**, based on **Task 3 — Quiz App**.
 
 ## Features
 
-- **Dimensional 3D-Inspired Interface**:
-  - Custom sculpted `QuizNova3DEmblem` combining a geometric `Q` ring, bevelled tail, and a 4-point learning spark motif.
-  - Layered cards with extruded bottom lips, top-edge bevel highlights, tactile raised buttons, and an animated result medallion.
-  - Coordinated **Dark**, **Light**, and **System** themes, plus a **Reduce Motion** setting that also respects Android system animation scale.
-- **225 Unique Curated Questions (5 Domains × 3 Tiers × 15 Questions)**:
-  - **Domains**: `Python` (Python 3.11+), `Java` (Java 17 LTS), `SQL` (ANSI SQL / PostgreSQL / SQLite), `Computer Fundamentals`, and `Logical Reasoning`, plus balanced **Mixed Quiz** sessions.
-  - **Difficulty Tiers**: `Foundation` (core conceptual models), `Applied` (default — code tracing, query evaluation, and realistic scenarios), and `Advanced` (deep runtime semantics, query optimization, and analytical reasoning).
-  - Every question features 4 distinct options, a stable ID, formatted monospace code blocks where relevant, and a step-by-step explanation.
-- **Deterministic Quiz Flow & Scoring**:
-  - Presents one multiple-choice question at a time.
-  - Selecting an option highlights it without auto-submitting; **Submit Answer** is enabled only after selection.
-  - Submitting locks the answer, immediately displays **Correct (+1)** or **Incorrect (0)** with icons and text, reveals the correct answer, and presents the explanation.
-  - Explicit **Next Question** / **View Results** navigation—never advances automatically.
-- **Practice Mode vs. Challenge Mode**:
-  - **Practice Mode**: Switch apps freely without penalty; active session progress, shuffled question/option order, and submitted answers are persisted in Jetpack DataStore and restored seamlessly.
-  - **Challenge Mode**: Requires explicit acceptance of foreground-focus rules before starting. Rejects starting while in split-screen / multi-window mode. Once active and focused, losing window focus (`onWindowFocusChanged(false)`) or backgrounding (`ON_STOP` when `!isChangingConfigurations`) automatically finalizes and persists the attempt once using only already-submitted answers. Applies `FLAG_SECURE` strictly during the active Challenge quiz screen and removes it immediately afterward so Home, Results, and Progress can be recorded for portfolio demos.
-- **Results, Answer Review & Plain-Text Share**:
-  - Displays final score (`X / Y`), percentage (using total questions in the attempt as denominator), and counts of **Correct**, **Incorrect**, and **Unanswered** questions.
-  - Distinguishes normal completion, automatic submission (`"Automatically submitted because the app lost focus."`), and interrupted Challenge sessions.
-  - Full question-by-question **Answer Review** and plain-text score sharing via the Android Share Sheet.
-- **Local Progress Analytics & Attempt History**:
-  - Backed exclusively by genuine local **Room** database records.
-  - Filterable by `All Modes`, `Practice`, and `Challenge`.
-  - Attributes Mixed Quiz answers to their actual underlying domains (`Python`, `Java`, `SQL`, `Computer Fundamentals`, `Logical Reasoning`).
+- Animated Welcome screen and dimensional interface
+- Category-based quizzes and random Mixed Quiz sessions
+- Foundation, Applied and Advanced difficulty levels
+- Configurable quiz length
+- One multiple-choice question at a time
+- Explicit answer submission with immediate feedback
+- Correct-answer explanations
+- Final scores and question-by-question answer review
+- Practice and Challenge modes
+- Progress dashboard and attempt history
+- Score sharing through Android’s share sheet
+- Light, Dark and System themes
+- Reduce Motion preference
+- Offline question bank and local data storage
 
----
+## Categories
 
-## Tech Stack
+- Python
+- Java
+- SQL
+- Computer Fundamentals
+- Logical Reasoning
 
-- **Language**: Kotlin 2.2
-- **UI Framework**: Jetpack Compose + Material 3 (Edge-to-Edge, Adaptive `NavigationBar` / `NavigationRail`)
-- **Architecture**: MVVM (`QuizNovaViewModel`, `QuizRepository`, `QuizScoringEngine`, `QuizAnalyticsEngine`)
-- **Local Persistence**:
-  - **Room Database** (`QuizDatabase`, `QuizAttemptEntity`, `QuizAnswerRecordEntity`) for finalized attempts and answer review records.
-  - **Jetpack DataStore Preferences** (`PreferencesAndSessionStore`) for theme, Reduce Motion, and active session recovery.
-- **Testing**: JUnit 4, Kotlin Coroutines Test, Robolectric, and Compose UI Test (`testDebugUnitTest`).
+## How to Use
 
----
+1. Open QuizNova and tap **Get Started**.
+2. Choose a category or a Mixed Quiz.
+3. Select the difficulty, quiz length and mode.
+4. Select an answer and tap **Submit Answer**.
+5. Read the feedback and explanation, then continue.
+6. View your final score, review answers and track progress.
 
-## Scoring Rules
+## Question Selection
 
-- Each question is worth **1 mark** when the explicitly submitted option matches the question's `correctOptionId`.
-- **Incorrect** answers and **Unanswered** questions receive **0 marks** (no negative marking).
-- An option that is selected on screen but **not explicitly submitted** before a Challenge auto-submits is counted as **Unanswered (0 marks)**.
-- **Attempt Percentage** = `round((correctCount / totalQuestions) * 100)`.
-- **Overall Accuracy** = `round((totalCorrectAcrossAttempts / totalQuestionsAcrossAttempts) * 100)`.
+Questions are bundled with the app rather than generated by an online AI service.
 
----
+Question rotation is designed to prioritise unseen questions within the selected category and difficulty, with displayed-question records stored locally across sessions. Mixed quizzes share those records with category quizzes.
 
-## Privacy & Challenge Integrity Limitations
+When the selected pool is exhausted, questions can repeat in a new cycle. The collection is finite; it does not provide unlimited new questions.
 
-- **100% Local & Offline**: QuizNova requests zero dangerous or network permissions. All attempts, answer records, and preferences remain in local app storage on the device.
-- **Challenge Focus Monitoring**: Challenge mode uses standard Android Activity lifecycle (`onStop`) and window focus (`onWindowFocusChanged`) callbacks. Because Android does not distinguish why focus was lost without invasive permissions, legitimate system interruptions (incoming calls, notification shade, permission/volume panels, or system overlays) can also trigger automatic submission.
-- **Honest Non-Claims**: QuizNova does **not** use Accessibility Services, Device Administrator APIs, or Usage Stats, and cannot block external cameras, secondary devices, or OS-level features such as Circle to Search or Gemini overlays.
-- **Scoped `FLAG_SECURE`**: Screenshot and screen-recording restriction (`WindowManager.LayoutParams.FLAG_SECURE`) is applied only while an active Challenge quiz is displayed and is cleared as soon as the user exits to Results or Home.
+Clearing app data or reinstalling may reset locally stored rotation records.
 
----
+## Quiz Modes
 
-## Project Structure
+### Practice
+
+Practise at your own pace with immediate feedback and explanations. Switching away from the app does not carry a Challenge-mode penalty.
+
+### Challenge
+
+Challenge mode requires acceptance of its rules before starting. Leaving the app or losing focus may automatically submit the attempt using answers already submitted.
+
+Legitimate interruptions, such as calls or system overlays, may also trigger submission. Challenge mode is an integrity measure, not a guarantee against cheating.
+
+## Scoring
+
+- Correct submitted answer: **1 point**
+- Incorrect answer: **0 points**
+- Unanswered question: **0 points**
+- No negative marking
+
+An option selected but not submitted before automatic submission remains unanswered.
+
+The result percentage uses the total number of questions in the attempt, including unanswered questions.
+
+## Technology
+
+- **Language:** Kotlin
+- **Interface:** Jetpack Compose and Material 3
+- **Architecture:** ViewModel and repository-based structure
+- **Attempt storage:** Room
+- **Preferences and session storage:** Jetpack DataStore
+- **Build system:** Gradle
+
+## Run Locally
+
+1. Download or clone this repository.
+2. Open the project’s root folder in **Android Studio**.
+3. Install the JDK and Android SDK versions required by the Gradle configuration.
+4. Allow Gradle sync to complete.
+5. Select an Android emulator or connected Android phone.
+6. Run the **app** module.
+
+Internet access may be required to download build tools and dependencies during setup.
+
+## Build an APK
+
+In Android Studio, use the APK build action for the **app** module.
+
+The standard debug APK output location is:
 
 ```text
-app/src/main/java/com/example/
-├── MainActivity.kt                         # Edge-to-edge host, FLAG_SECURE scope & lifecycle/focus hooks
-├── model/
-│   └── QuizModels.kt                       # Domain models, enums, session & summary state
-├── data/
-│   ├── QuizRepository.kt                   # Coordinates Room DB + DataStore with single-finalization lock
-│   ├── local/
-│   │   ├── QuizDatabase.kt                 # Room entities, DAO & database
-│   │   └── PreferencesAndSessionStore.kt   # DataStore preferences & active session serializer
-│   └── questions/
-│       ├── QuestionBank.kt                 # 225-question aggregator, session builder & bank validator
-│       ├── PythonQuestions.kt              # 45 Python 3.11+ questions (15 per difficulty)
-│       ├── JavaQuestions.kt                # 45 Java 17 LTS questions (15 per difficulty)
-│       ├── SqlQuestions.kt                 # 45 SQL questions (15 per difficulty)
-│       ├── ComputerFundamentalsQuestions.kt# 45 CS Fundamentals questions (15 per difficulty)
-│       └── LogicalReasoningQuestions.kt    # 45 Logical Reasoning questions (15 per difficulty)
-├── domain/
-│   ├── QuizScoringEngine.kt                # Pure selection, submission locking & evaluation logic
-│   └── QuizAnalyticsEngine.kt              # Genuine accuracy, category attribution & trend calculations
-├── viewmodel/
-│   └── QuizNovaViewModel.kt                # UI state holder, setup, Practice & Challenge orchestration
-└── ui/
-    ├── QuizNovaApp.kt                      # Adaptive scaffold & screen router
-    ├── components/
-    │   └── DimensionalComponents.kt        # 3D Q-Spark emblem, layered cards, raised buttons, medallion
-    ├── screens/
-    │   ├── HomeScreen.kt                   # Dimensional landing page & category cards
-    │   ├── QuizSetupScreen.kt              # Quiz configuration & Challenge integrity consent
-    │   ├── QuizSessionScreen.kt            # Active question view, option locking & instant feedback
-    │   ├── ResultsAndReviewScreens.kt      # Score medallion, share sheet & full answer review
-    │   ├── ProgressAndHistoryScreens.kt    # Local analytics dashboard, history & attempt detail
-    │   └── SettingsAndPrivacyScreen.kt     # Theme, Reduce Motion, Clear History & privacy transparency
-    └── theme/
-        ├── Color.kt                        # Midnight Navy, Electric Violet, Cyan & Daylight palettes
-        ├── Type.kt                         # Space Grotesk, Plus Jakarta Sans & JetBrains Mono
-        └── Theme.kt                        # Coordinated Light/Dark theme & motion tokens
+app/build/outputs/apk/debug/app-debug.apk
 ```
 
----
-
-## Setup & Verification
+If a compatible Gradle installation is available, the project tasks can also be invoked with:
 
 ```bash
-# Run unit and Robolectric tests
 gradle :app:testDebugUnitTest
-
-# Build installable Debug APK
 gradle :app:assembleDebug
 ```
 
----
+These are build and test instructions, not a claim that all checks have passed on every device.
+
+## Install on Android
+
+1. Transfer the APK to your Android phone.
+2. Open it and allow installation from that source if prompted.
+3. Tap **Install**, or **Update** for a compatible existing installation.
+4. Open QuizNova.
+
+Updates must preserve the application ID and signing certificate. Use a higher version code for newer releases.
+
+## Privacy and Local Storage
+
+QuizNova is designed to work offline without accounts, advertisements or an external backend.
+
+Quiz history, answer records, preferences and question-rotation records are stored locally. They are not synchronised between devices.
+
+Challenge mode uses Android lifecycle and focus signals; it does not inspect the contents of other apps. Screenshot restrictions apply during active Challenge sessions where supported by Android.
+
+Clearing app data or uninstalling may remove local records. Device backup behaviour depends on the application configuration and Android settings.
+
+## Project Structure
+
+- `app/src/main/java/` — Kotlin application source
+- `app/src/main/java/com/example/data/` — Repository, storage and question bank
+- `app/src/main/java/com/example/domain/` — Scoring and analytics logic
+- `app/src/main/java/com/example/viewmodel/` — Application state management
+- `app/src/main/java/com/example/ui/` — Screens, components and themes
+- `app/src/main/res/` — Icons, fonts and Android resources
+- `app/src/test/` — Local test source
+- `app/src/androidTest/` — Instrumented test source
+- `gradle/` — Gradle configuration
+- `build.gradle.kts` — Root build configuration
+- `settings.gradle.kts` — Project settings
+
+## Limitations
+
+- The bundled question collection is finite.
+- Question content may require corrections as issues are identified.
+- Challenge interruption behaviour can vary between devices.
+- Screenshot restrictions cannot prevent external cameras or all forms of assistance.
+- Local records are not a cross-device backup.
 
 ## Author
 
 **Chethan Kumar D**
+
+[GitHub Profile](https://github.com/chethan-kumar-d)
