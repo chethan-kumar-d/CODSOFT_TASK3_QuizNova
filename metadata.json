@@ -1,0 +1,6 @@
+{
+  "name": "QuizNova",
+  "description": "Dimensional 3D-style programming and aptitude quiz app with Practice & Challenge modes, 225+ curated questions, local Room analytics, and transparent privacy controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

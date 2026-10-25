@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">QuizNova</string>
+    <string name="welcome_subtitle">Learn. Practice. Improve.</string>
+    <string name="action_get_started">Get Started</string>
+    <string name="hero_headline">Challenge your mind.</string>
+    <string name="hero_subtitle">Programming &amp; aptitude practice with local progress tracking.</string>
+    <string name="action_start_quiz">Start Quiz</string>
+    <string name="action_random_quiz">Random Quiz</string>
+    <string name="action_mixed_quiz">Mixed Quiz</string>
+    <string name="action_begin_practice">Start Practice</string>
+    <string name="action_begin_challenge">Start Challenge</string>
+    <string name="action_submit_answer">Submit Answer</string>
+    <string name="action_next_question">Next Question</string>
+    <string name="action_view_results">View Results</string>
+    <string name="action_review_answers">Review Answers</string>
+    <string name="action_try_again">Try Again</string>
+    <string name="action_back_home">Back to Home</string>
+    <string name="action_share_score">Share</string>
+    <string name="action_clear_history">Clear History</string>
+    <string name="challenge_integrity_notice">Keep QuizNova in the foreground. Leaving the app or losing focus may automatically end and submit this attempt, including when opening system panels or overlays. Unanswered questions receive zero marks.</string>
+    <string name="challenge_screenshot_notice">Screenshots are restricted during Challenge mode where supported.</string>
+    <string name="challenge_auto_submitted_banner">Automatically submitted because the app lost focus.</string>
+    <string name="challenge_interrupted_banner">Ended because the previous Challenge session was interrupted before completion.</string>
+    <string name="challenge_multiwindow_rejected">Challenge mode cannot start in split-screen or multi-window mode. Please switch to full screen or use Practice mode.</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_progress">Progress</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+</resources>

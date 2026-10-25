@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 3D Drop Shadow of the Q Ring -->
+    <path
+        android:fillType="evenOdd"
+        android:pathData="M52,55m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0 M52,55m-13,0a13,13 0,1 0,26 0a13,13 0,1 0,-26 0"
+        android:fillColor="#55030712" />
+
+    <!-- 3D Extrusion Base Layer of the Q Ring (Deep Violet-Indigo) -->
+    <path
+        android:fillType="evenOdd"
+        android:pathData="M51,53.5m-23.5,0a23.5,23.5 0,1 1,47 0a23.5,23.5 0,1 1,-47 0 M51,53.5m-12.5,0a12.5,12.5 0,1 0,25 0a12.5,12.5 0,1 0,-25 0"
+        android:fillColor="#FF4C1D95" />
+
+    <!-- Primary Sculpted Q Ring with Electric Violet to Cyan Gradient -->
+    <path
+        android:fillType="evenOdd"
+        android:pathData="M50,51m-23,0a23,23 0,1 1,46 0a23,23 0,1 1,-46 0 M50,51m-12,0a12,12 0,1 0,24 0a12,12 0,1 0,-24 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="27"
+                android:startY="28"
+                android:endX="73"
+                android:endY="74"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF22D3EE" />
+                <item android:offset="0.48" android:color="#FF7C3AED" />
+                <item android:offset="1.0" android:color="#FF6366F1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Upper Bevel Highlight on the Q Ring -->
+    <path
+        android:pathData="M32,43 A20,20 0 0,1 66,38 A18,18 0 0,0 34,46 Z"
+        android:fillColor="#88A5F3FC" />
+
+    <!-- Sculpted 3D Q Tail Base Shadow -->
+    <path
+        android:pathData="M58,59 L66,53 L79,68 L71,75 Z"
+        android:fillColor="#FF0E7490" />
+
+    <!-- Sculpted 3D Q Tail (Cyan to Electric Violet) -->
+    <path
+        android:pathData="M57,57.5 L65,51.5 L78.5,66.5 L70.5,73.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="57"
+                android:startY="52"
+                android:endX="78"
+                android:endY="73"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF67E8F9" />
+                <item android:offset="1.0" android:color="#FF06B6D4" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Learning / Nova Spark Star Motif inside & emerging top-right -->
+    <!-- Outer Spark Glow -->
+    <path
+        android:pathData="M66,35 L69.5,43.5 L78,47 L69.5,50.5 L66,59 L62.5,50.5 L54,47 L62.5,43.5 Z"
+        android:fillColor="#44F59E0B" />
+
+    <!-- Main 3D Golden-Cyan Learning Spark -->
+    <path
+        android:pathData="M66,37 L68.8,44.2 L76,47 L68.8,49.8 L66,57 L63.2,49.8 L56,47 L63.2,44.2 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="56"
+                android:startY="37"
+                android:endX="76"
+                android:endY="57"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFef08A" />
+                <item android:offset="0.55" android:color="#FFF59E0B" />
+                <item android:offset="1.0" android:color="#FF22D3EE" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Inner Core Diamond of the Spark -->
+    <path
+        android:pathData="M66,43 L68,47 L66,51 L64,47 Z"
+        android:fillColor="#FFFFFFFF" />
+</vector>
