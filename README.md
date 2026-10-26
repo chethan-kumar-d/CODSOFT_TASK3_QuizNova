@@ -2,7 +2,13 @@
 
 QuizNova is a native Android quiz app for practising programming concepts and logical reasoning. It combines an animated 3D-inspired interface with instant answer feedback, explanations and locally stored progress.
 
-This is my third completed project for the **CodSoft Android Development Internship**, based on **Task 3 — Quiz App**.
+This is my third completed project for the **CodSoft Android Development Internship**.
+
+## Demo Video
+
+Watch QuizNova running on my Android phone:
+
+[▶ Watch the QuizNova demo on LinkedIn](https://lnkd.in/p/dvkkXPry)
 
 ## Features
 
