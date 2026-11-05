@@ -8,7 +8,7 @@ This is my third completed project for the **CodSoft Android Development Interns
 
 Watch QuizNova running on my Android phone:
 
-[▶ Watch the QuizNova demo on LinkedIn](https://lnkd.in/p/dvkkXPry)
+[▶ Watch the QuizNova demo on LinkedIn](https://www.linkedin.com/posts/chethan-kumar-d_codsoft-androidappdevelopment-internship-ugcPost-7520487550210273280-U4yF/)
 
 ## Features
 
